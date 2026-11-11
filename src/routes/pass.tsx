@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { QRCodeSVG } from "qrcode.react";
 import { SiteLayout } from "@/components/site/Layout";
 
-type PassSearch = { id?: string; role?: "fan" | "pilot" };
+type PassSearch = { id?: string | undefined; role?: "fan" | "pilot" | undefined };
 
 export const Route = createFileRoute("/pass")({
   validateSearch: (s: Record<string, unknown>): PassSearch => {
