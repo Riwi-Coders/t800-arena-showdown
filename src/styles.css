@@ -55,6 +55,7 @@
   --color-platinum: var(--platinum);
   --font-display: "Teko", Impact, sans-serif;
   --font-sans: "Rajdhani", "Inter", sans-serif;
+  --font-tech: "Chakra Petch", "Rajdhani", monospace;
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);

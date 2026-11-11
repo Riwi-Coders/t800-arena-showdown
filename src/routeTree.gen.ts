@@ -10,12 +10,21 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as AthletesRouteImport } from './routes/athletes'
 import { Route as EventsRouteImport } from './routes/events'
+import { Route as HallOfFameRouteImport } from './routes/hall-of-fame'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as PassRouteImport } from './routes/pass'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AthletesRoute = AthletesRouteImport.update({
@@ -28,35 +37,88 @@ const EventsRoute = EventsRouteImport.update({
   path: '/events',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HallOfFameRoute = HallOfFameRouteImport.update({
+  id: '/hall-of-fame',
+  path: '/hall-of-fame',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PassRoute = PassRouteImport.update({
+  id: '/pass',
+  path: '/pass',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/athletes': typeof AthletesRoute
   '/events': typeof EventsRoute
+  '/hall-of-fame': typeof HallOfFameRoute
+  '/login': typeof LoginRoute
+  '/pass': typeof PassRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/athletes': typeof AthletesRoute
   '/events': typeof EventsRoute
+  '/hall-of-fame': typeof HallOfFameRoute
+  '/login': typeof LoginRoute
+  '/pass': typeof PassRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/athletes': typeof AthletesRoute
   '/events': typeof EventsRoute
+  '/hall-of-fame': typeof HallOfFameRoute
+  '/login': typeof LoginRoute
+  '/pass': typeof PassRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/athletes' | '/events'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/athletes'
+    | '/events'
+    | '/hall-of-fame'
+    | '/login'
+    | '/pass'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/athletes' | '/events'
-  id: '__root__' | '/' | '/athletes' | '/events'
+  to:
+    | '/'
+    | '/about'
+    | '/athletes'
+    | '/events'
+    | '/hall-of-fame'
+    | '/login'
+    | '/pass'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/athletes'
+    | '/events'
+    | '/hall-of-fame'
+    | '/login'
+    | '/pass'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   AthletesRoute: typeof AthletesRoute
   EventsRoute: typeof EventsRoute
+  HallOfFameRoute: typeof HallOfFameRoute
+  LoginRoute: typeof LoginRoute
+  PassRoute: typeof PassRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -66,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/athletes': {
@@ -82,13 +151,38 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EventsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/hall-of-fame': {
+      id: '/hall-of-fame'
+      path: '/hall-of-fame'
+      fullPath: '/hall-of-fame'
+      preLoaderRoute: typeof HallOfFameRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pass': {
+      id: '/pass'
+      path: '/pass'
+      fullPath: '/pass'
+      preLoaderRoute: typeof PassRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   AthletesRoute: AthletesRoute,
   EventsRoute: EventsRoute,
+  HallOfFameRoute: HallOfFameRoute,
+  LoginRoute: LoginRoute,
+  PassRoute: PassRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

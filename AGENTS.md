@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- Each page is one flat route file with plain Tailwind markup and data from `src/components/site/data.ts`; why: the dev team ports pages to static HTML/Tailwind, so avoid deep component nesting.
+- Login (`/login`) and profile pass (`/pass`) are front-end mocks with no real auth; why: the user asked for a simulated terminal, not accounts.
